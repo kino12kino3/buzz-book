@@ -5,4 +5,26 @@
 <%- if @config['techbooster'] && @config['techbooster']['backcoverimage'] -%>
 \def\techbooster@coverimage{images/<%= @config['techbooster']['backcoverimage'] %>}
 <%- end -%>
+
+% B6判では既定の\Hugeが大きすぎるため、章見出し(「はじめに」等の扉見出しを含む)を1段階縮小する
+\def\@makechapterhead#1{%
+  \vspace*{2\Cvs}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \Large\headfont \@chapapp\thechapter\@chappos
+        \par\nobreak
+        \vskip \Cvs
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \huge \headfont #1\par\nobreak
+    \vskip 3\Cvs}}
+\def\@makeschapterhead#1{%
+  \vspace*{2\Cvs}%
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \huge \headfont #1\par\nobreak
+    \vskip 3\Cvs}}
 \makeatother
