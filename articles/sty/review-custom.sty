@@ -1,1 +1,33 @@
 % for user-defined macro
+
+% review-base.styの大扉(\reviewtitlepagecont)は、A5/B5判を前提にした
+% \vskip 15em 等の固定の空きが大きすぎ、B6判では1ページに収まらず
+% 2ページ目に書名・発行日があふれてしまう。mm単位の小さめの余白と
+% 見出しサイズに置き換えて1ページに収める。
+\ifdefined\review@titlepage
+  \ifthenelse{\isundefined{\review@titlefile}}{%
+    \def\reviewtitlepagecont{%
+       \begin{titlepage}
+       \thispagestyle{empty}
+       \begin{center}%
+       \vspace*{10mm}
+       \reviewtitlefont%
+       {\LARGE\review@booktitlename\par}%
+       \ifdefined\review@subtitlename
+         \vskip 0.5em%
+         {\large\review@subtitlename\par}%
+       \fi
+       \vskip 20mm%
+       {\Large
+       \lineskip .75em
+       \begin{tabular}[t]{p{\textwidth}}%
+       \centering\review@titlepageauthors
+       \end{tabular}\par}%
+       \vfill
+       {\normalsize\review@date \review@intn@edition\hspace{2zw}\review@intn@publishedby\par}%
+       \vskip5mm\mbox{}
+       \end{center}%
+       \end{titlepage}\clearpage
+    }
+  }{}
+\fi
