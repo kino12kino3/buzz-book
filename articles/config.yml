@@ -22,7 +22,7 @@ bookname: ReVIEW-Template
 language: ja
 
 # 書名
-booktitle: {name: "突然のバズから心を守る方法　～成長教の作者が語る～", file-as: "とつぜんのばずからこころをまもるほうほう"}
+booktitle: {name: "突然のバズから心を守る方法", file-as: "とつぜんのばずからこころをまもるほうほう"}
 
 # 著者名。「, 」で区切って複数指定できる
 aut: [{name: "紀野しずく", file-as: "きのしずく"}]
