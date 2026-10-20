@@ -10,6 +10,12 @@
 \fancyfoot[LE,RO]{\thepage}
 \renewcommand{\sectionmark}[1]{\markright{\thesection~#1}{}}
 \renewcommand{\chaptermark}[1]{\markboth{\prechaptername\ \thechapter\ \postchaptername~#1}{}}
+% \rightmark defaults to the LAST section mark set on the page (botmark),
+% so a page whose top is still in the previous section but whose bottom
+% enters a new one shows the NEW section's title at the very top of the
+% page. Use \topmark (the mark in effect at the page's start) instead,
+% so the header matches what the reader actually sees at the top.
+\renewcommand{\rightmark}{\expandafter\@secondoftwo\topmark}
 \renewcommand{\headfont}{\gtfamily\sffamily\bfseries}
 
 \fancypagestyle{plainhead}{%
